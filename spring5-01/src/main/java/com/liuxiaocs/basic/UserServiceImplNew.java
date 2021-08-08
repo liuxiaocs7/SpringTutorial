@@ -2,7 +2,7 @@ package com.liuxiaocs.basic;
 
 /**
  * 新改的UserService实现类，此时不需要改变其他的任何一行代码，只需要扩充新增[对修改关闭，对扩展开放]
- * 在配置文件Properties中修改为新的类全限定名
+ * 在配置文件Properties中修改为新的类全限定名即可
  *
  * @author liuxiaocs
  * @date 2021/3/16 18:42

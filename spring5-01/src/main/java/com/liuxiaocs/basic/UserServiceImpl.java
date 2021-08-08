@@ -6,17 +6,18 @@ package com.liuxiaocs.basic;
  */
 public class UserServiceImpl implements UserService {
 
-    // 这里也存在耦合
-    // private UserDAO userDao = new UserDAOImpl();
+    // 1. 这里也存在耦合，在创建UserDAO对象时使用了new的方式
+    // 将DAO的实现类硬编码在了程序中
+    // private UserDAO userDAO = new UserDAOImpl();
 
-    // 使用工厂方法获取userDAO
+    // 2. 使用工厂方法获取userDAO
     // private UserDAO userDAO = BeanFactory.getUserDAO();
 
-    // 使用通用工厂方法获取
-    // private UserDAO userDAO = (UserDAO) BeanFactory.getBean("userDAO");
+    // 3. 使用通用工厂方法获取
+    private UserDAO userDAO = (UserDAO) BeanFactory.getBean("userDAO");
 
-    // 通过Spring的方式完成注入
-    private UserDAO userDAO;
+    // 4. 通过Spring的方式完成注入
+    // private UserDAO userDAO;
 
     public UserDAO getUserDAO() {
         return userDAO;

@@ -26,9 +26,9 @@ public class Person {
 
     private Properties p;
 
-//    private Person() {
-//        System.out.println("Person.Person");
-//    }
+    // private Person() {
+    //    System.out.println("Person.Person");
+    // }
 
     public Person() {
         System.out.println("Person.Person");

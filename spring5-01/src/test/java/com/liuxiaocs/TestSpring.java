@@ -25,14 +25,18 @@ public class TestSpring {
      */
     @Test
     public void test1() {
-        // 硬编码，耦合，程序的维护性非常差
+        // 1. 硬编码，存在耦合，程序的维护性非常差
+        // 将 UserService 接口的实现类 UserServiceImpl 硬编码在程序中
+        // 如果想换掉实现类 UserServiceImpl，那么调用者(测试类)的程序也需要改动
+
+        // 使用一个新的实现类 UserServiceImplNew()
         // UserService userService = new UserServiceImplNew()
-        // 需要修改成上面的源代码，需要重新编译和部署，不符合开闭原则
+        // 如果修改成上面的源代码，需要重新编译和部署，不符合开闭原则(打开扩展，关闭修改)
         // UserService userService = new UserServiceImpl();
 
         // 2.使用工厂类创建对象
         // 这段代码里面没有耦合，因为UserService这个接口的实现类在这段代码中没有任何体现
-        // 通过工厂类的工厂方法创建这个对象之后可以彻底解决这里的耦合
+        // 通过工厂类的工厂方法创建这个对象之后可以彻底解决这里的耦合，但是在BeanFactory中又有耦合了，相当于耦合转移了
         // UserService userService = BeanFactory.getUserService();
         // 2.1 在BeanFactory中直接返回对象  return new UserServiceImpl();
         // 2.2 通过反射的方式返回对象 Class clazz = Class.forName("com.liuxiaocs.basic.UserServiceImpl");
