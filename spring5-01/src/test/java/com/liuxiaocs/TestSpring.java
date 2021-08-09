@@ -163,7 +163,9 @@ public class TestSpring {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
         Person person = (Person) ctx.getBean("person");
 
-        // 通过代码来完成的，这不是注入(通过配置文件来赋值)，有耦合
+        // 这种赋值是通过代码来完成的，这不是注入(注入是通过配置文件来赋值)
+        // 这种写法可以达到效果，但是存在耦合
+        // 如果以后这个person的名字不想叫suns了，要修改的话很麻烦，必须在代码文件中修改，需要重新编译部署
         person.setId(1);
         person.setName("suns");
 
