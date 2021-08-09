@@ -7,9 +7,6 @@ import java.util.Set;
 
 /**
  * 通过工厂来创建对象
- *
- * @author liuxiaocs
- * @date 2021/3/16 20:08
  */
 public class Person {
 

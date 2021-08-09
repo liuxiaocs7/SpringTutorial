@@ -6,9 +6,6 @@ import java.util.Properties;
 
 /**
  * 工厂类，用于生产对象
- *
- * @author liuxiaocs
- * @date 2021/3/16 18:51
  */
 public class BeanFactory {
 

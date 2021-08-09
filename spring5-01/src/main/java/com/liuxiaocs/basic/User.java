@@ -2,10 +2,7 @@ package com.liuxiaocs.basic;
 
 import java.io.Serializable;
 
-/**
- * @author liuxiaocs
- * @date 2021/3/16 18:42
- */
+
 public class User implements Serializable {
     private String name;
     private String password;

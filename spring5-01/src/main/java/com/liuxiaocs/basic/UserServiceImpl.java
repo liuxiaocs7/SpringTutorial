@@ -1,9 +1,6 @@
 package com.liuxiaocs.basic;
 
-/**
- * @author liuxiaocs
- * @date 2021/3/16 18:42
- */
+
 public class UserServiceImpl implements UserService {
 
     // 1. 这里也存在耦合，在创建UserDAO对象时使用了new的方式
