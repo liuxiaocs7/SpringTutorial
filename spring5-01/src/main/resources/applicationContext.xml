@@ -7,7 +7,7 @@
         id属性 名字(唯一)
         class属性 配置全限定名
     -->
-    <!--<bean id="person" class="com.liuxiaocs.basic.Person" />-->
+    <!-- <bean id="person" class="com.liuxiaocs.basic.Person" />-->
     <!--<bean id="person1" class="com.liuxiaocs.basic.Person" />-->
 
     <!--不配置id时，有id的默认值-->

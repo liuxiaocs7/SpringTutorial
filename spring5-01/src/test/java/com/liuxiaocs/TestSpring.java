@@ -64,10 +64,10 @@ public class TestSpring {
      */
     @Test
     public void test3() {
-        // 1. 获得Spring的工厂  指定文件的路径
+        // 1. 获得Spring的工厂 (指定配置文件的路径)
         // ApplicationContext是一个接口无法实例化，使用其具体实现类ClassPathXmlApplicationContext来进行实例化
         ApplicationContext context = new ClassPathXmlApplicationContext("/applicationContext.xml");
-        // 2. 通过工厂类 获得 对象 person就是在配置文件里面声明的id
+        // 2. 通过工厂类 获得 对象 person就是在配置文件里面给bean声明的id
         // 可以看出这里和我们写的其实是差不多的，根据id获取对象然后进行强转即可
         Person person = (Person) context.getBean("person");
         System.out.println("Person = " + person);
@@ -80,7 +80,7 @@ public class TestSpring {
     public void test4() {
         // 1. 获得Spring的工厂，指定文件的路径
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
-        // 使用这种方式[同时指定id和类型]不需要进行强转
+        // 使用这种方式[同时指定id和类型]不需要进行强转，省略了强转的过程
         // Person person = ctx.getBean("person", Person.class);
         // System.out.println("Person = " + person);
 
@@ -93,14 +93,14 @@ public class TestSpring {
         // 配置文件中声明的就是bean
         // 获取的是Spring工厂配置文件中所有bean标签的id值：person、person1
         // 不能判断name值
-        // getBeanDefinitionNames() 方法获取bean定义的名字，也就是配置文件中所有的id
+        // getBeanDefinitionNames() 方法获取bean定义的名字，也就是配置文件中所有bean对应的id
         /*String[] beanDefinitionNames = ctx.getBeanDefinitionNames();
         for (String beanDefinitionName : beanDefinitionNames) {
             System.out.println("beanDefinitionName = " + beanDefinitionName);
         }*/
 
         // getBeanNamesForType() 是根据类型获取bean的名字
-        // 获取工厂中Person类型的所有bean
+        // 获取工厂中Person类型的所有bean的id值
         // 根据类型获得Spring配置文件中对应的id值
         // 可以判断name值
         String[] beanNamesForType = ctx.getBeanNamesForType(Person.class);
@@ -109,7 +109,7 @@ public class TestSpring {
         }
 
         // containsBeanDefinition()方法判断Spring工厂中有没有这个名字的bean
-        // 有没有对应id的bean存在于工厂中
+        // 有没有对应id的bean存在于Spring工厂中
         // 用于判断是否存在指定id值的bean，不能判断name值
         if (ctx.containsBeanDefinition("person2")) {
             System.out.println("true = " + true);
@@ -127,6 +127,9 @@ public class TestSpring {
 
     /**
      * 用于测试：用于测试获取没有id属性的bean
+     * Spring配置文件中只声明 <bean class="com.liuxiaocs.basic.Person"/> 是可以完成对象的创建的
+     * 这种语法Spring是认可的
+     * 这种配置Spring会提供一个默认的id com.liuxiaocs.basic.Person#0
      */
     @Test
     public void test5() {
@@ -142,6 +145,8 @@ public class TestSpring {
 
     /**
      * 用于测试：用于测试name属性
+     * id是bean的大名，name是bean的别名
+     * 通过大名和别名都可以获得这个对象
      */
     @Test
     public void test6() {
