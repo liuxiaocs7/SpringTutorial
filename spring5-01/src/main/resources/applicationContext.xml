@@ -115,12 +115,18 @@
     <!--p:userDAO-ref userDAO-ref表示userDAO属性，是一个引用，后面的userDAO是bean的id值-->
     <bean id="userService" class="com.liuxiaocs.basic.UserServiceImpl" p:userDAO-ref="userDAO"/>
 
+    <!--测试构造器注入-->
     <!--顺序和个数都需要和构造参数保持一致-->
     <bean id="customer" class="com.liuxiaocs.constructor.Customer">
+        <!--构造器参数-->
+        <!--可以只给一个属性进行赋值，另一个属性就是默认初始化-->
         <!--<constructor-arg>-->
             <!--<value>liuxiaocs</value>-->
         <!--</constructor-arg>-->
+
         <!--参数数量相同时，需要指定类型加以区分-->
+        <!--一个String、一个int，需要单独指定-->
+        <!--指定类型之后就会找int参数的构造方法，而不会找String参数的构造方法-->
         <constructor-arg type="int">
             <value>12</value>
         </constructor-arg>

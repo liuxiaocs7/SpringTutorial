@@ -4,9 +4,6 @@ import java.io.Serializable;
 
 /**
  * 测试构造器注入
- *
- * @author liuxiaocs
- * @date 2021/3/16 23:28
  */
 public class Customer implements Serializable {
 
