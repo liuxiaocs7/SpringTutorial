@@ -11,11 +11,12 @@ public class UserServiceImpl implements UserService {
     // private UserDAO userDAO = BeanFactory.getUserDAO();
 
     // 3. 使用通用工厂方法获取
-    private UserDAO userDAO = (UserDAO) BeanFactory.getBean("userDAO");
+    // private UserDAO userDAO = (UserDAO) BeanFactory.getBean("userDAO");
 
     // 4. 通过Spring的方式完成注入
-    // private UserDAO userDAO;
+    private UserDAO userDAO;
 
+    // 提供对应的set/get方法
     public UserDAO getUserDAO() {
         return userDAO;
     }

@@ -30,6 +30,7 @@
 
         <property name="emails">
             <list>
+                <!-- 每个value标签对应数组中的一个元素 -->
                 <value>suns@zparkhr.com.cn</value>
                 <value>liucy@zparkhr.com.cn</value>
                 <value>chenyn@zparkhr.com.cn</value>
@@ -38,7 +39,7 @@
 
         <property name="tels">
             <set>
-                <!--自动过滤重复的-->
+                <!-- Set会自动过滤重复的 -->
                 <value>43279437289</value>
                 <value>12349437289</value>
                 <value>64579437289</value>
@@ -72,6 +73,7 @@
 
         <property name="p">
             <props>
+                <!--省略了value标签-->
                 <prop key="key1">value1</prop>
                 <prop key="key2">value2</prop>
             </props>
@@ -80,7 +82,7 @@
 
     <!--第一种赋值的语法-->
     <!--先创建UserService的实现对象，接下来为userDAO对象赋值，为这个属性提供一个DAO对象即可，使用bean标签-->
-    <!--将一个DAO对象创建好并赋值给UserServiceImpl中的UserDAO，这里声明bean没有id和name，使用默认名称。这个里面的bean没有其他人引用-->
+    <!--将一个DAO对象创建好并赋值给UserServiceImpl中的UserDAO，这里声明bean没有id和name，使用默认名称。这里面的bean没有其他人引用，只使用一次-->
     <!--<bean id="userService" class="com.liuxiaocs.basic.UserServiceImpl">-->
     <!--    <property name="userDAO">-->
     <!--        <bean class="com.liuxiaocs.basic.UserDAOImpl"/>-->
@@ -88,6 +90,7 @@
     <!--</bean>-->
 
     <!--第二种赋值的语法-->
+    <!--将userDAO对象单独声明出来-->
     <bean id="userDAO" class="com.liuxiaocs.basic.UserDAOImpl"></bean>
 
     <!--<bean id="userService" class="com.liuxiaocs.basic.UserServiceImpl">-->
@@ -100,14 +103,16 @@
     <!--    <property name="userDAO" ref="userDAO"/>-->
     <!--</bean>-->
 
-    <!--               使用p命名空间                 -->
+    <!--               使用p命名空间简化JDK类型变量的注入                 -->
     <!--使用命名空间来替换property标签-->
     <!--<bean id="person" class="com.liuxiaocs.basic.Person" p:name="xiaojr" p:id="100"/>-->
+    <!--基于value属性来简化的方式-->
     <!--<bean id="person" class="com.liuxiaocs.basic.Person" />-->
     <!--    <property name="name" value=""/>-->
     <!--    <property name="id" value=""/>-->
     <!--</bean>-->
 
+    <!--p:userDAO-ref userDAO-ref表示userDAO属性，是一个引用，后面的userDAO是bean的id值-->
     <bean id="userService" class="com.liuxiaocs.basic.UserServiceImpl" p:userDAO-ref="userDAO"/>
 
     <!--顺序和个数都需要和构造参数保持一致-->
