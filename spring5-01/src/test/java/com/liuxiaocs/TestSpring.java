@@ -313,7 +313,7 @@ public class TestSpring {
      */
     @Test
     public void test17() {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext1.xml");
         Connection conn = (Connection) ctx.getBean("conn");
         System.out.println("conn = " + conn);
     }
