@@ -1,6 +1,7 @@
 package com.liuxiaocs;
 
 import com.liuxiaocs.basic.*;
+import com.liuxiaocs.beanpost.Category;
 import com.liuxiaocs.constructor.Customer;
 import com.liuxiaocs.factorybean.ConnectionFactoryBean;
 import com.liuxiaocs.life.Product;
@@ -326,5 +327,15 @@ public class TestSpring {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext2.xml");
         com.liuxiaocs.converter.Person person = (com.liuxiaocs.converter.Person) ctx.getBean("person");
         System.out.println("birthday = " + person.getBirthday());
+    }
+
+    /**
+     * 用于测试：BeanPostProcessor
+     */
+    @Test
+    public void test19() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext3.xml");
+        Category category = (Category) ctx.getBean("c");
+        System.out.println("name = " + category.getName());
     }
 }
