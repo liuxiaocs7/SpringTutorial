@@ -307,4 +307,14 @@ public class TestSpring {
         // 显式关闭工厂
         ctx.close();
     }
+
+    /**
+     * 用于测试：配置文件参数化
+     */
+    @Test
+    public void test17() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        Connection conn = (Connection) ctx.getBean("conn");
+        System.out.println("conn = " + conn);
+    }
 }

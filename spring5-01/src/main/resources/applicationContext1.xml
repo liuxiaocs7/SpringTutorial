@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        id属性 名字(唯一)
+        class属性 配置全限定名
+    -->
+    <!-- <bean id="person" class="com.liuxiaocs.basic.Person" />-->
+    <!--<bean id="person1" class="com.liuxiaocs.basic.Person" />-->
+
+    <!--不配置id时，有id的默认值-->
+    <!--<bean class="com.liuxiaocs.basic.Person"/>-->
+
+    <!--id是大名，name是别名-->
+    <bean id="person" name="p1" class="com.liuxiaocs.basic.Person">
+        <!--类Person中有一个属性名为id-->
+        <!--<property name="id">-->
+        <!--    <value>10</value>-->
+        <!--</property>-->
+        <!--可以简写为以下形式-->
+        <property name="id" value="11"/>
+
+        <!--类Person中有一个属性名为name-->
+        <!--<property name="name">-->
+        <!--    <value>liuxiaocs</value>-->
+        <!--</property>-->
+        <property name="name" value="xiaohei"/>
+
+        <property name="emails">
+            <list>
+                <!-- 每个value标签对应数组中的一个元素 -->
+                <value>suns@zparkhr.com.cn</value>
+                <value>liucy@zparkhr.com.cn</value>
+                <value>chenyn@zparkhr.com.cn</value>
+            </list>
+        </property>
+
+        <property name="tels">
+            <set>
+                <!-- Set会自动过滤重复的 -->
+                <value>43279437289</value>
+                <value>12349437289</value>
+                <value>64579437289</value>
+                <value>64579437289</value>
+                <value>64579437289</value>
+            </set>
+        </property>
+
+        <property name="addresses">
+            <list>
+                <value>Beijing</value>
+                <value>Shanghai</value>
+                <value>Shenzhen</value>
+                <value>Shenzhen</value>
+                <value>Shenzhen</value>
+            </list>
+        </property>
+
+        <property name="qqs">
+            <map>
+                <entry>
+                    <key><value>Suns</value></key>
+                    <value>3214342432</value>
+                </entry>
+                <entry>
+                    <key><value>chenyn</value></key>
+                    <value>890789789</value>
+                </entry>
+            </map>
+        </property>
+
+        <property name="p">
+            <props>
+                <!--省略了value标签-->
+                <prop key="key1">value1</prop>
+                <prop key="key2">value2</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--第一种赋值的语法-->
+    <!--先创建UserService的实现对象，接下来为userDAO对象赋值，为这个属性提供一个DAO对象即可，使用bean标签-->
+    <!--将一个DAO对象创建好并赋值给UserServiceImpl中的UserDAO，这里声明bean没有id和name，使用默认名称。这里面的bean没有其他人引用，只使用一次-->
+    <!--<bean id="userService" class="com.liuxiaocs.basic.UserServiceImpl">-->
+    <!--    <property name="userDAO">-->
+    <!--        <bean class="com.liuxiaocs.basic.UserDAOImpl"/>-->
+    <!--    </property>-->
+    <!--</bean>-->
+
+    <!--第二种赋值的语法-->
+    <!--将userDAO对象单独声明出来-->
+    <bean id="userDAO" class="com.liuxiaocs.basic.UserDAOImpl"></bean>
+
+    <!--<bean id="userService" class="com.liuxiaocs.basic.UserServiceImpl">-->
+    <!--    <property name="userDAO">-->
+    <!--        <ref bean="userDAO"/>-->
+    <!--    </property>-->
+    <!--</bean>-->
+
+    <!--<bean id="userService" class="com.liuxiaocs.basic.UserServiceImpl">-->
+    <!--    <property name="userDAO" ref="userDAO"/>-->
+    <!--</bean>-->
+
+    <!--               使用p命名空间简化JDK类型变量的注入                 -->
+    <!--使用命名空间来替换property标签-->
+    <!--<bean id="person" class="com.liuxiaocs.basic.Person" p:name="xiaojr" p:id="100"/>-->
+    <!--基于value属性来简化的方式-->
+    <!--<bean id="person" class="com.liuxiaocs.basic.Person" />-->
+    <!--    <property name="name" value=""/>-->
+    <!--    <property name="id" value=""/>-->
+    <!--</bean>-->
+
+    <!--p:userDAO-ref userDAO-ref表示userDAO属性，是一个引用，后面的userDAO是bean的id值-->
+    <bean id="userService" class="com.liuxiaocs.basic.UserServiceImpl" p:userDAO-ref="userDAO"/>
+
+    <!--测试构造器注入-->
+    <!--顺序和个数都需要和构造参数保持一致-->
+    <bean id="customer" class="com.liuxiaocs.constructor.Customer">
+        <!--构造器参数-->
+        <!--可以只给一个属性进行赋值，另一个属性就是默认初始化-->
+        <!--<constructor-arg>-->
+            <!--<value>liuxiaocs</value>-->
+        <!--</constructor-arg>-->
+
+        <!--参数数量相同时，需要指定类型加以区分-->
+        <!--一个String、一个int，需要单独指定-->
+        <!--指定类型之后就会找int参数的构造方法，而不会找String参数的构造方法-->
+        <constructor-arg type="int">
+            <value>12</value>
+        </constructor-arg>
+    </bean>
+
+    <!--复杂对象-->
+    <!--1. FactoryBean-->
+    <!--数据库连接，工厂Bean，参数通过set注入-->
+    <!--<bean id="conn" class="com.liuxiaocs.factorybean.ConnectionFactoryBean">-->
+    <!--    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>-->
+    <!--    <property name="url" value="jdbc:mysql://localhost:3306/mybatis-plus?serverTimezone=GMT%2B8"/>-->
+    <!--    <property name="username" value="root"/>-->
+    <!--    <property name="password" value="lx123456"/>-->
+    <!--</bean>-->
+
+    <!--2. 实例工厂-->
+    <!--<bean id="connFactory" class="com.liuxiaocs.factorybean.ConnectionFactory"/>-->
+    <!--工厂实例是connFactory，工厂方法是getConnection-->
+    <!--让工厂实例factory-bean通过工厂方法factory-method创建一个实例-->
+    <!--<bean id="conn" factory-bean="connFactory" factory-method="getConnection"/>-->
+
+    <!--3. 静态工厂-->
+    <bean id="conn" class="com.liuxiaocs.factorybean.StaticConnectionFactory" factory-method="getConnection"/>
+
+    <!--创建次数-->
+    <bean id="account" scope="singleton" class="com.liuxiaocs.scope.Account"/>
+
+    <!--测试创建阶段-->
+    <!--<bean id="product" scope="singleton" class="com.liuxiaocs.life.Product" lazy-init="true" />-->
+    <!--测试初始化阶段-->
+    <!--<bean id="product" class="com.liuxiaocs.life.Product" />-->
+    <!--测试初始化阶段 自定义初始化方法(不要写括号)-->
+    <!--<bean id="product" class="com.liuxiaocs.life.Product" init-method="myInit">-->
+    <!--    <property name="name" value="suns"/>-->
+    <!--</bean>-->
+
+    <!--测试销毁方法-->
+    <bean id="product" scope="prototype" class="com.liuxiaocs.life.Product" init-method="myInit" destroy-method="myDestroy">
+        <property name="name" value="suns"/>
+    </bean>
+</beans>
