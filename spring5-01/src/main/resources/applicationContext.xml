@@ -159,7 +159,12 @@
     <!--测试初始化阶段-->
     <!--<bean id="product" class="com.liuxiaocs.life.Product" />-->
     <!--测试初始化阶段 自定义初始化方法(不要写括号)-->
-    <bean id="product" class="com.liuxiaocs.life.Product" init-method="myInit">
+    <!--<bean id="product" class="com.liuxiaocs.life.Product" init-method="myInit">-->
+    <!--    <property name="name" value="suns"/>-->
+    <!--</bean>-->
+
+    <!--测试销毁方法-->
+    <bean id="product" scope="prototype" class="com.liuxiaocs.life.Product" init-method="myInit" destroy-method="myDestroy">
         <property name="name" value="suns"/>
     </bean>
 </beans>

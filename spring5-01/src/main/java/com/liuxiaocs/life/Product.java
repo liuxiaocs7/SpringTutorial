@@ -1,9 +1,10 @@
 package com.liuxiaocs.life;
 
 
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-public class Product implements InitializingBean {
+public class Product implements InitializingBean, DisposableBean {
 
     private String name;
 
@@ -28,6 +29,15 @@ public class Product implements InitializingBean {
 
     public void myInit() {
         System.out.println("Product.myInit");
+    }
+
+    // 销毁方法：销毁操作(资源释放的操作)
+    public void destroy() throws Exception {
+        System.out.println("Product.destroy");
+    }
+
+    public void myDestroy() throws Exception {
+        System.out.println("Product.myDestroy");
     }
 }
 
