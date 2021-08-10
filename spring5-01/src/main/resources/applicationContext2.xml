@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--Spring创建MyDateConverter类型对象-->
+    <bean id="myDateConverter" class="com.liuxiaocs.converter.MyDateConverter">
+        <property name="pattern" value="yyyy-MM-dd" />
+    </bean>
+
+    <!--用于注册类型转换器，Spring提供的-->
+    <!--这里用来注册我们自己写的 字符串-日期 转换器-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <!--为ConversionServiceFactoryBean的converters属性注入值，使用set注入的方式-->
+        <!--通过源码可以知道这个成员变量的类型是set<?>，因此使用set为其赋值。-->
+        <!--set的值就是需要使用ConversionServiceFactoryBean注册的类型转换器-->
+        <property name="converters">
+            <set>
+                <!--引用自定义类型转换器-->
+                <!--在Spring中进行注册了，那么Spring就认可了我们写的这个类就是一个类型转换器了-->
+                <!--Spring后面在进行类型转换时遇到了Date类型就会调用我们自定义的类型转换器了-->
+                <ref bean="myDateConverter"/>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="person" class="com.liuxiaocs.converter.Person">
+        <property name="name" value="suns" />
+        <property name="birthday" value="2020-04-01"/>
+    </bean>
+
+</beans>
