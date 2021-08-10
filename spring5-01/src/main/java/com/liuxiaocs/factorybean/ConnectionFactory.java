@@ -6,8 +6,6 @@ import java.sql.SQLException;
 
 /**
  * 实例工厂
- * @author liuxiaocs
- * @date 2021/3/17 11:05
  */
 public class ConnectionFactory {
 

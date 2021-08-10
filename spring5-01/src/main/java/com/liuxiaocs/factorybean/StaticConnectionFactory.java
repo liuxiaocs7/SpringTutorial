@@ -11,9 +11,6 @@ import java.sql.SQLException;
  * staticConnectionFactory.getConnection();
  *
  * 静态工厂
- *
- * @author liuxiaocs
- * @date 2021/3/17 11:13
  */
 public class StaticConnectionFactory {
 

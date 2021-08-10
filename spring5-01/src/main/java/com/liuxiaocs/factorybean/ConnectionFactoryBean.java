@@ -9,9 +9,6 @@ import java.sql.DriverManager;
  * 复杂对象的创建方式
  * 实现 FactoryBean<T> 接口
  * 泛型表达了要创建什么类型的复杂对象
- *
- * @author liuxiaocs
- * @date 2021/3/17 10:25
  */
 public class ConnectionFactoryBean implements FactoryBean<Connection> {
 

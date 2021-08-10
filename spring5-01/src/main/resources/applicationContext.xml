@@ -132,8 +132,9 @@
         </constructor-arg>
     </bean>
 
+    <!--复杂对象-->
+    <!--1. FactoryBean-->
     <!--数据库连接，工厂Bean，参数通过set注入-->
-    <!--FactoryBean-->
     <!--<bean id="conn" class="com.liuxiaocs.factorybean.ConnectionFactoryBean">-->
     <!--    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>-->
     <!--    <property name="url" value="jdbc:mysql://localhost:3306/mybatis-plus?serverTimezone=GMT%2B8"/>-->
@@ -141,12 +142,13 @@
     <!--    <property name="password" value="lx123456"/>-->
     <!--</bean>-->
 
-    <!--实例工厂-->
+    <!--2. 实例工厂-->
     <!--<bean id="connFactory" class="com.liuxiaocs.factorybean.ConnectionFactory"/>-->
     <!--工厂实例是connFactory，工厂方法是getConnection-->
+    <!--让工厂实例factory-bean通过工厂方法factory-method创建一个实例-->
     <!--<bean id="conn" factory-bean="connFactory" factory-method="getConnection"/>-->
 
-    <!--静态工厂-->
+    <!--3. 静态工厂-->
     <bean id="conn" class="com.liuxiaocs.factorybean.StaticConnectionFactory" factory-method="getConnection"/>
 
     <!--创建次数-->
