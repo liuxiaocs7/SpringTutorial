@@ -302,6 +302,6 @@ public class TestSpring {
         // 快捷键.castvar
         // 获取对象的时候才会被创建
         // 懒加载也是之后获取对象的时候才会被创建
-        Product product = (Product) ctx.getBean("product");
+        // Product product = (Product) ctx.getBean("product");
     }
 }

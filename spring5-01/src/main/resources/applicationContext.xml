@@ -154,5 +154,12 @@
     <!--创建次数-->
     <bean id="account" scope="singleton" class="com.liuxiaocs.scope.Account"/>
 
-    <bean id="product" scope="singleton" class="com.liuxiaocs.life.Product" lazy-init="true"></bean>
+    <!--测试创建阶段-->
+    <!--<bean id="product" scope="singleton" class="com.liuxiaocs.life.Product" lazy-init="true" />-->
+    <!--测试初始化阶段-->
+    <!--<bean id="product" class="com.liuxiaocs.life.Product" />-->
+    <!--测试初始化阶段 自定义初始化方法(不要写括号)-->
+    <bean id="product" class="com.liuxiaocs.life.Product" init-method="myInit">
+        <property name="name" value="suns"/>
+    </bean>
 </beans>
