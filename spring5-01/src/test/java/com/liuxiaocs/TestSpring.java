@@ -3,6 +3,7 @@ package com.liuxiaocs;
 import com.liuxiaocs.basic.*;
 import com.liuxiaocs.constructor.Customer;
 import com.liuxiaocs.factorybean.ConnectionFactoryBean;
+import com.liuxiaocs.life.Product;
 import com.liuxiaocs.scope.Account;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -286,5 +287,21 @@ public class TestSpring {
         Account account2 = (Account) ctx.getBean("account");
         System.out.println("Account1 = " + account1);
         System.out.println("Account2 = " + account2);
+    }
+
+    /**
+     * 用于测试：演示声明周期
+     */
+    @Test
+    public void test16() {
+        // 这行代码执行完，Spring工厂就创建了
+        // 如果是singleton单例对象的话，这行执行完对象应该就已经被创建了
+        // 在控制台中得到了对应的输出：Product.Product(工厂创建的同时对象也被创建了)
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        // 如果对象是prototype的话工厂创建的时候不会创建对象
+        // 快捷键.castvar
+        // 获取对象的时候才会被创建
+        // 懒加载也是之后获取对象的时候才会被创建
+        Product product = (Product) ctx.getBean("product");
     }
 }

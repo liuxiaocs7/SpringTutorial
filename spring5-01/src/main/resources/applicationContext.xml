@@ -153,4 +153,6 @@
 
     <!--创建次数-->
     <bean id="account" scope="singleton" class="com.liuxiaocs.scope.Account"/>
+
+    <bean id="product" scope="singleton" class="com.liuxiaocs.life.Product" lazy-init="true"></bean>
 </beans>
