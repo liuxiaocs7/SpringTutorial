@@ -21,7 +21,19 @@
         <!--expression切入点表达式：为某些方法加入额外功能-->
         <!--execution(* *(..))表示所有的方法都加这个额外功能-->
         <!--所有的方法，都作为切入点，加入额外功能 login register-->
-        <aop:pointcut id="pc" expression="execution(* *(..))"/>
+        <!--<aop:pointcut id="pc" expression="execution(* *(..))"/>-->
+        <!--login(..)方法增加额外功能-->
+        <!--<aop:pointcut id="pc" expression="execution(* login(..))"/>-->
+        <!--login(String, String)方法增加额外功能-->
+        <!--<aop:pointcut id="pc" expression="execution(* login(String, String))"/>-->
+        <!--<aop:pointcut id="pc" expression="execution(* login(String))"/>-->
+        <!--<aop:pointcut id="pc" expression="execution(* login(String, ..))"/>-->
+        <!--类全限定名-->
+        <!--<aop:pointcut id="pc" expression="execution(* com.liuxiaocs.proxy.UserServiceImpl.login(..))"/>-->
+        <!--类切入点，类中的所有方法-->
+        <!--<aop:pointcut id="pc" expression="execution(* com.liuxiaocs.proxy.UserServiceImpl.*(..))"/>-->
+        <!--<aop:pointcut id="pc" expression="execution(* *.UserServiceImpl.*(..))"/>-->
+        <aop:pointcut id="pc" expression="execution(* *..UserServiceImpl.*(..))"/>
 
         <!--4. 组装-->
         <!--目的：把切入点与额外功能进行整合-->
