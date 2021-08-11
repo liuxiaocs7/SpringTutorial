@@ -31,7 +31,8 @@ public class TestProxy {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
         // 实际获取的是代理对象，而不是原始对象了
         UserService userService = (UserService) ctx.getBean("userService");
-        userService.login("suns", "123456");
+        boolean result = userService.login("suns", "123456");
+        System.out.println("result = " + result);
         userService.register(new User());
     }
 

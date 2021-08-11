@@ -8,6 +8,7 @@ package com.liuxiaocs.proxy;
 public class UserServiceImpl implements UserService {
     public void register(User user) {
         System.out.println("UserServiceImpl.register 业务运算 + DAO");
+        // throw new RuntimeException("测试异常");
     }
 
     public boolean login(String name, String password) {

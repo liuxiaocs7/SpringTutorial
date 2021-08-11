@@ -12,7 +12,8 @@
     <!--<bean id="before" class="com.liuxiaocs.dynamic.Before1"/>-->
     <!--使用Before1新的额外功能-->
     <!--打开了扩展-->
-    <bean id="before" class="com.liuxiaocs.dynamic.Before1"/>
+    <!--<bean id="before" class="com.liuxiaocs.dynamic.Before1"/>-->
+    <bean id="arround" class="com.liuxiaocs.dynamic.Arround"/>
 
     <!--3. 定义切入点-->
     <aop:config>
@@ -25,7 +26,7 @@
         <!--4. 组装-->
         <!--目的：把切入点与额外功能进行整合-->
         <!--2、3组装，所有的方法都加上before的额外功能-->
-        <aop:advisor advice-ref="before" pointcut-ref="pc"/>
+        <aop:advisor advice-ref="arround" pointcut-ref="pc"/>
     </aop:config>
 
 </beans>
