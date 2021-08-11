@@ -3,6 +3,8 @@ package com.liuxiaocs;
 
 import com.liuxiaocs.proxy.*;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestProxy {
 
@@ -18,6 +20,29 @@ public class TestProxy {
 
         System.out.println("======================================");
         OrderService orderService = new OrderServiceProxy();
+        orderService.showOrder();
+    }
+
+    /**
+     * 用于测试：Spring的动态代理
+     */
+    @Test
+    public void test2() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        // 实际获取的是代理对象，而不是原始对象了
+        UserService userService = (UserService) ctx.getBean("userService");
+        userService.login("suns", "123456");
+        userService.register(new User());
+    }
+
+    /**
+     * 用于测试：OrderService动态代理
+     */
+    @Test
+    public void test3() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        // OrderService代理类对象
+        OrderService orderService = (OrderService) ctx.getBean("orderService");
         orderService.showOrder();
     }
 }

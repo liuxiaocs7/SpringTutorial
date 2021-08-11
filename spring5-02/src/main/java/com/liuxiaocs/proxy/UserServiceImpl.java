@@ -3,6 +3,7 @@ package com.liuxiaocs.proxy;
 
 /**
  * 原始类、目标类
+ * 只完成核心功能
  */
 public class UserServiceImpl implements UserService {
     public void register(User user) {
