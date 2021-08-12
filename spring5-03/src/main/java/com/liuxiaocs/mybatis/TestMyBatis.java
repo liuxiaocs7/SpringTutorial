@@ -11,6 +11,7 @@ import java.io.InputStream;
 
 public class TestMyBatis {
     public static void main(String[] args) throws IOException {
+        // 创建SqlSessionFactory
         InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 

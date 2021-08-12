@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <!--设置别名，以后在配置文件中就不需要写全限定名了，而是可以直接写别名了-->
+    <!--设置别名，以后在Mapper文件中就不需要写全限定名了，而是可以直接写别名了-->
     <typeAliases>
         <typeAlias alias="user" type="com.liuxiaocs.mybatis.User"/>
     </typeAliases>
@@ -20,6 +20,7 @@
         </environment>
     </environments>
 
+    <!--注册Mapper-->
     <mappers>
         <mapper resource="UserDAOMapper.xml"/>
     </mappers>

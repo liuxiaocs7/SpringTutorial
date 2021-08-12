@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.liuxiaocs.mybatis.UserDAO">
-    <!--这里直接使用的是在mybatis-config.xml中设置的别名-->
-    <insert id="save" parameterType="user">
+
+<mapper namespace="com.liuxiaocs.dao.UserDAO">
+    <!--使用entity下类名作为别名-->
+    <insert id="save" parameterType="User">
         insert into t_users(name, password) values (#{name}, #{password})
     </insert>
 </mapper>

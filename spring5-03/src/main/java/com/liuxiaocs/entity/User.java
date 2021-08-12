@@ -1,25 +1,12 @@
-package com.liuxiaocs.mybatis;
+package com.liuxiaocs.entity;
 
 import java.io.Serializable;
 
 
-/**
- * 实体对象类
- */
 public class User implements Serializable {
-
     private Integer id;
     private String name;
     private String password;
-
-    public User() {
-    }
-
-    public User(Integer id, String name, String password) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-    }
 
     public Integer getId() {
         return id;
