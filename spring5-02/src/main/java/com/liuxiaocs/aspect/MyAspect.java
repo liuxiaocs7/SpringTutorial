@@ -30,7 +30,9 @@ public class MyAspect {
      *
      * 只定义一次，使用时调用对象的函数即可
      */
-    @Pointcut("execution(* login(..))")
+    // @Pointcut("execution(* login(..))")
+    // 类切入点
+    @Pointcut("execution(* *..UserServiceImpl.*(..))")
     public void myPointcut() {
 
     }
