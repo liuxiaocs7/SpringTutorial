@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--1. 创建原始对象-->
-    <bean id="userService" class="com.liuxiaocs.proxy.UserServiceImpl"/>
+    <bean id="userService" class="com.liuxiaocs.proxy.a.UserServiceImpl"/>
     <!--只需要加入目标对象即可-->
     <bean id="orderService" class="com.liuxiaocs.proxy.OrderServiceImpl"/>
     <!--2. 创建额外功能对象-->
@@ -29,15 +29,39 @@
         <!--<aop:pointcut id="pc" expression="execution(* login(String))"/>-->
         <!--<aop:pointcut id="pc" expression="execution(* login(String, ..))"/>-->
         <!--类全限定名-->
-        <!--<aop:pointcut id="pc" expression="execution(* com.liuxiaocs.proxy.UserServiceImpl.login(..))"/>-->
+        <!--<aop:pointcut id="pc" expression="execution(* com.liuxiaocs.proxy.a.UserServiceImpl.login(..))"/>-->
         <!--类切入点，类中的所有方法-->
-        <!--<aop:pointcut id="pc" expression="execution(* com.liuxiaocs.proxy.UserServiceImpl.*(..))"/>-->
+        <!--<aop:pointcut id="pc" expression="execution(* com.liuxiaocs.proxy.a.UserServiceImpl.*(..))"/>-->
         <!--<aop:pointcut id="pc" expression="execution(* *.UserServiceImpl.*(..))"/>-->
-        <aop:pointcut id="pc" expression="execution(* *..UserServiceImpl.*(..))"/>
+        <!--<aop:pointcut id="pc" expression="execution(* *..UserServiceImpl.*(..))"/>-->
+        <!--包切入点-->
+        <!--包中所有类的所有方法，不关注参数-->
+        <!--<aop:pointcut id="pc" expression="execution(* com.liuxiaocs.proxy.*.*(..))"/>-->
+        <!--包含子包-->
+        <!--<aop:pointcut id="pc" expression="execution(* com.liuxiaocs.proxy..*.*(..))"/>-->
+
+        <!--args切入点表达式-->
+        <!--只关心函数必须有两个String类型的参数-->
+        <!--<aop:pointcut id="pc" expression="args(String, String)"/>-->
+
+        <!--within切入点表达式-->
+        <!--简化类切入点-->
+        <!--<aop:pointcut id="pc" expression="within(*..UserServiceImpl)"/>-->
+        <!--简化包切入点-->
+        <!--<aop:pointcut id="pc" expression="within(com.liuxiaocs.proxy..*)"/>-->
+
+        <!--自定义注解切入-->
+        <!--<aop:pointcut id="pc" expression="@annotation(com.liuxiaocs.Log)"/>-->
+
+        <!--切入点函数与运算-->
+        <!--<aop:pointcut id="pc" expression="execution(* login(..)) and args(String, String)"/>-->
+        <!--切入点函数或运算-->
+        <aop:pointcut id="pc" expression="execution(* login(..)) or execution(* register(..))"/>
+
 
         <!--4. 组装-->
         <!--目的：把切入点与额外功能进行整合-->
-        <!--2、3组装，所有的方法都加上before的额外功能-->
+        <!--将2、3组装，所有的方法都加上before的额外功能-->
         <aop:advisor advice-ref="arround" pointcut-ref="pc"/>
     </aop:config>
 

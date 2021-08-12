@@ -1,6 +1,9 @@
 package com.liuxiaocs.proxy;
 
 
+import com.liuxiaocs.proxy.a.UserService;
+import com.liuxiaocs.proxy.a.UserServiceImpl;
+
 /**
  * 1. 实现相同接口
  * 2. 有原始类对象

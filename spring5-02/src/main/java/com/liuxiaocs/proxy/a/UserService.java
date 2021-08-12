@@ -1,5 +1,7 @@
-package com.liuxiaocs.proxy;
+package com.liuxiaocs.proxy.a;
 
+
+import com.liuxiaocs.proxy.User;
 
 public interface UserService {
 
