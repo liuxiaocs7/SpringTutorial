@@ -4,9 +4,10 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <import resource="applicationContext-dao.xml" />
     <import resource="applicationContext-service.xml" />
-    <import resource="applicationContext-action.xml" />
 
+    <bean id="regAction" scope="prototype" class="com.liuxiaocs.action.RegAction">
+        <property name="userService" ref="userService"/>
+    </bean>
 
 </beans>
