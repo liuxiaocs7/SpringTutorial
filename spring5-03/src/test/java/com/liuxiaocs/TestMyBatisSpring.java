@@ -35,7 +35,21 @@ public class TestMyBatisSpring {
         // 通过原始对象的id值获取代理对象
         UserService userService = (UserService) ctx.getBean("userService");
         User user = new User();
-        user.setName("xiaowb");
+        user.setName("xiaowb1");
+        user.setPassword("989898");
+        userService.register(user);
+    }
+
+    /**
+     * 用于测试：Spring的事务处理
+     */
+    @Test
+    public void test3() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext-tx.xml");
+        // 通过原始对象的id值获取代理对象
+        UserService userService = (UserService) ctx.getBean("userService");
+        User user = new User();
+        user.setName("xiaowb4");
         user.setPassword("989898");
         userService.register(user);
     }

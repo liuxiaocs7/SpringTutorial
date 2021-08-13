@@ -51,8 +51,14 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <!--组装切面 创建代理-->
-    <!--<tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>-->
-    <tx:annotation-driven transaction-manager="dataSourceTransactionManager" proxy-target-class="true"/>
-
+    <tx:advice id="txAdvice" transaction-manager="dataSourceTransactionManager">
+        <tx:attributes>
+            <tx:method name="register" isolation="DEFAULT" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+    
+    <aop:config>
+        <aop:pointcut id="pc" expression="execution(* com.liuxiaocs.service..*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pc"/>
+    </aop:config>
 </beans>
