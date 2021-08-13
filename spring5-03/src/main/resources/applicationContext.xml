@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!--配置连接池-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
@@ -36,5 +37,21 @@
         <!--MapperScannerConfigurer自动到这个包下面找对应的DAO接口帮我们创建好对应的DAO对象-->
         <property name="basePackage" value="com.liuxiaocs.dao"/>
     </bean>
+
+    <!--原始对象-->
+    <bean id="userService" class="com.liuxiaocs.service.UserServiceImpl">
+        <!--MapperScannerConfigurer会为我们创建DAO接口的实现类，首单词首字母小写-->
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
+
+    <!--额外功能-->
+    <!--DataSourceTransactionManager-->
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--注入连接池，创建连接进而控制事务-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--组装切面-->
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
 
 </beans>
