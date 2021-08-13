@@ -12,6 +12,7 @@
         <module>spring5-01</module>
         <module>spring5-02</module>
         <module>spring5-03</module>
+        <module>spring5-web</module>
     </modules>
 
 
