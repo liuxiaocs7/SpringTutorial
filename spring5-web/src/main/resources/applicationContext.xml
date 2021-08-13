@@ -4,11 +4,27 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <bean id="userService" class="com.liuxiaocs.struts2.UserServiceImpl"/>
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/suns?serverTimezone=GMT%2B8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="lx123456"/>
+    </bean>
 
-    <!--每个请求创建一个新的Action-->
-    <bean id="regAction" scope="prototype" class="com.liuxiaocs.struts2.RegAction">
-        <property name="userService" ref="userService"/>
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="typeAliasesPackage" value="com.liuxiaocs.entity"/>
+        <property name="mapperLocations">
+            <list>
+                <!--路径+通配-->
+                <value>classpath:com.liuxiaocs.mapper/*Mapper.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="configurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"/>
+        <property name="basePackage" value="com.liuxiaocs.dao"/>
     </bean>
 
 </beans>
