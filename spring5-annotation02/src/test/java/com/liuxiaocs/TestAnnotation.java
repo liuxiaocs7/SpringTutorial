@@ -70,4 +70,16 @@ public class TestAnnotation {
         System.out.println("customer.getId() = " + customer.getId());
         System.out.println("customer.getName() = " + customer.getName());
     }
+
+    /**
+     * 用于测试：@ComponentScan基本使用方式
+     */
+    @Test
+    public void test6() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig2.class);
+        String[] beanDefinitionNames = ctx.getBeanDefinitionNames();
+        for (String beanDefinitionName : beanDefinitionNames) {
+            System.out.println("beanDefinitionName = " + beanDefinitionName);
+        }
+    }
 }
