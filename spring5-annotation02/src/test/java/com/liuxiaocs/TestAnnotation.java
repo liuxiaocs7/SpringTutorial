@@ -107,4 +107,18 @@ public class TestAnnotation {
         UserDAO userDAO = (UserDAO) ctx.getBean("userDAO");
         userDAO.save();
     }
+
+    @Test
+    public void test9() {
+        // 1. 指定配置Bean文件所在的包
+        // ApplicationContext ctx = new AnnotationConfigApplicationContext("com.liuxiaocs.config");
+        // 2. @Import 只指定AppConfig1即可
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig1.class);
+        // 3. 指定多个配置Bean的Class对象
+        // ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig1.class, AppConfig2.class);
+        UserDAO userDAO = (UserDAO) ctx.getBean("userDAO");
+        UserService userService = (UserService) ctx.getBean("userService");
+        System.out.println("userService = " + userService);
+        System.out.println("userDAO = " + userDAO);
+    }
 }
