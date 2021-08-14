@@ -1,6 +1,7 @@
 package com.liuxiaocs;
 
 
+import com.liuxiaocs.bean.Customer;
 import com.liuxiaocs.bean.User;
 import com.liuxiaocs.injection.UserService;
 import org.junit.Test;
@@ -57,5 +58,16 @@ public class TestAnnotation {
         UserService userService = (UserService) ctx.getBean("userService");
         System.out.println("userService = " + userService);
         userService.register();
+    }
+
+    /**
+     * 用于测试：@Bean JDK类型的注入
+     */
+    @Test
+    public void test5() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig1.class);
+        Customer customer = (Customer) ctx.getBean("customer");
+        System.out.println("customer.getId() = " + customer.getId());
+        System.out.println("customer.getName() = " + customer.getName());
     }
 }
