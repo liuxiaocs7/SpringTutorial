@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public void register(User user) throws Exception {
+    public void register(User user) {
         userDAO.save(user);
     }
 
