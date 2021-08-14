@@ -100,7 +100,10 @@ public class TestAnnotation {
      */
     @Test
     public void test8() {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig4.class);
+        // 让多个配置bean生效
+        // ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig4.class, AppConfig5.class);
+        // 在某个包下找配置bean即可
+        ApplicationContext ctx = new AnnotationConfigApplicationContext("com.liuxiaocs");
         UserDAO userDAO = (UserDAO) ctx.getBean("userDAO");
         userDAO.save();
     }
