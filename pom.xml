@@ -13,6 +13,7 @@
         <module>spring5-02</module>
         <module>spring5-03</module>
         <module>spring5-web</module>
+        <module>spring5-annotation01</module>
     </modules>
 
 
