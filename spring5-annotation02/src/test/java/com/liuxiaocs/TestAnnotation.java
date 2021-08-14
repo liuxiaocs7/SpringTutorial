@@ -3,6 +3,7 @@ package com.liuxiaocs;
 
 import com.liuxiaocs.bean.Customer;
 import com.liuxiaocs.bean.User;
+import com.liuxiaocs.injection.UserDAO;
 import com.liuxiaocs.injection.UserService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -92,5 +93,15 @@ public class TestAnnotation {
         Customer customer = (Customer) ctx.getBean("customer");
         System.out.println("customer.getId() = " + customer.getId());
         System.out.println("customer.getName() = " + customer.getName());
+    }
+
+    /**
+     * 用于测试：解耦合
+     */
+    @Test
+    public void test8() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig4.class);
+        UserDAO userDAO = (UserDAO) ctx.getBean("userDAO");
+        userDAO.save();
     }
 }
