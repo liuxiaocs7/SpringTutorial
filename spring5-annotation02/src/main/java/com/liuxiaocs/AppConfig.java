@@ -4,6 +4,7 @@ import com.liuxiaocs.bean.ConnectionFactoryBean;
 import com.liuxiaocs.bean.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,7 +16,8 @@ public class AppConfig {
     /**
      * 简单对象
      */
-    @Bean
+    @Bean("u")
+    @Scope("prototype")
     public User user() {
         return new User();
     }
