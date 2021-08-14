@@ -5,7 +5,19 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--设置包及其子包中扫描对应的注解，使其生效-->
-    <context:component-scan base-package="com.liuxiaocs"/>
+    <!--<context:component-scan base-package="com.liuxiaocs"/>-->
+
+    <!--增加排除策略-->
+    <context:component-scan base-package="com.liuxiaocs">
+        <!--排除特定类型-->
+        <context:exclude-filter type="assignable" expression="com.liuxiaocs.bean.User"/>
+        <!--排除特定注解-->
+<!--        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
+        <!--切入点表达式，bean包及其子包不被扫描-->
+        <context:exclude-filter type="aspectj" expression="com.liuxiaocs.injection..*"/>
+        <!--类切入点-->
+<!--        <context:exclude-filter type="aspectj" expression="*..User"/>-->
+    </context:component-scan>
 
     <!--使用bean标签覆盖component注解，注意id必须保持一致-->
 <!--    <bean id="u" class="com.liuxiaocs.bean.User">-->
