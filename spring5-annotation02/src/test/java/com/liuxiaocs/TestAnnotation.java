@@ -82,4 +82,15 @@ public class TestAnnotation {
             System.out.println("beanDefinitionName = " + beanDefinitionName);
         }
     }
+
+    /**
+     * 用于测试：配置的覆盖
+     */
+    @Test
+    public void test7() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig3.class);
+        Customer customer = (Customer) ctx.getBean("customer");
+        System.out.println("customer.getId() = " + customer.getId());
+        System.out.println("customer.getName() = " + customer.getName());
+    }
 }
