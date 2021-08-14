@@ -1,6 +1,6 @@
 package com.liuxiaocs.injection;
 
-
+// @Repository
 public class UserDAOImpl implements UserDAO {
 
     @Override

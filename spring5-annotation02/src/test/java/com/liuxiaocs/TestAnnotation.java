@@ -108,6 +108,9 @@ public class TestAnnotation {
         userDAO.save();
     }
 
+    /**
+     * 用于测试：多配置Bean的整合
+     */
     @Test
     public void test9() {
         // 1. 指定配置Bean文件所在的包
@@ -120,5 +123,44 @@ public class TestAnnotation {
         UserService userService = (UserService) ctx.getBean("userService");
         System.out.println("userService = " + userService);
         System.out.println("userDAO = " + userDAO);
+    }
+
+    /**
+     * 测试注入是否成功
+     */
+    @Test
+    public void test10() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(com.liuxiaocs.config.AppConfig1.class);
+        UserDAO userDAO = (UserDAO) ctx.getBean("userDAO");
+        UserService userService = (UserService) ctx.getBean("userService");
+        /*System.out.println("userService = " + userService);
+        System.out.println("userDAO = " + userDAO);*/
+        userService.register();
+    }
+
+    /**
+     * 用于测试：@Component与配置Bean的整合
+     */
+    @Test
+    public void test11() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(com.liuxiaocs.config.AppConfig3.class);
+        UserService userService = (UserService) ctx.getBean("userService");
+        UserDAO userDAOImpl = (UserDAO) ctx.getBean("userDAOImpl");
+        System.out.println("userService = " + userService);
+        System.out.println("userDAOImpl = " + userDAOImpl);
+        userService.register();
+    }
+
+    /**
+     * 用于测试：配置Bean与配置文件整合
+     */
+    @Test
+    public void test12() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(com.liuxiaocs.config.AppConfig4.class);
+        UserService userService = (UserService) ctx.getBean("userService");
+        UserDAO userDAO = (UserDAO) ctx.getBean("userDAO");
+        System.out.println("userService = " + userService);
+        System.out.println("userDAOImpl = " + userDAO);
+        userService.register();
     }
 }

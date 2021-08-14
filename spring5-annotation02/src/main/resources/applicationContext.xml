@@ -8,6 +8,8 @@
         <property name="name" value="xiaohuahua"/>
     </bean>
 
-    <bean id="userDAO" class="com.liuxiaocs.injection.UserDAOImplNew"/>
+<!--    <bean id="userDAO" class="com.liuxiaocs.injection.UserDAOImplNew"/>-->
+
+    <bean id="userDAO" class="com.liuxiaocs.injection.UserDAOImpl"/>
 
 </beans>
