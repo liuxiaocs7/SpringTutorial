@@ -8,15 +8,20 @@
     <!--<context:component-scan base-package="com.liuxiaocs"/>-->
 
     <!--增加排除策略-->
-    <context:component-scan base-package="com.liuxiaocs">
+<!--    <context:component-scan base-package="com.liuxiaocs">-->
         <!--排除特定类型-->
-        <context:exclude-filter type="assignable" expression="com.liuxiaocs.bean.User"/>
+<!--        <context:exclude-filter type="assignable" expression="com.liuxiaocs.bean.User"/>-->
         <!--排除特定注解-->
 <!--        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
         <!--切入点表达式，bean包及其子包不被扫描-->
-        <context:exclude-filter type="aspectj" expression="com.liuxiaocs.injection..*"/>
+<!--        <context:exclude-filter type="aspectj" expression="com.liuxiaocs.injection..*"/>-->
         <!--类切入点-->
 <!--        <context:exclude-filter type="aspectj" expression="*..User"/>-->
+<!--    </context:component-scan>-->
+
+    <context:component-scan base-package="com.liuxiaocs" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
     </context:component-scan>
 
     <!--使用bean标签覆盖component注解，注意id必须保持一致-->
