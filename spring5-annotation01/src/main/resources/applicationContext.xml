@@ -34,6 +34,10 @@
         <property name="id" value="10"/>
     </bean>
 
+    <bean id="userService" class="com.liuxiaocs.injection.UserServiceImpl">
+        <property name="userDAO" ref="userDAOImpl"/>
+    </bean>
+
     <!--数据配置文件-->
     <!--<context:property-placeholder location="classpath:init.properties"/>-->
 
