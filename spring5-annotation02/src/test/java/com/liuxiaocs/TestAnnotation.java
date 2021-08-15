@@ -3,6 +3,7 @@ package com.liuxiaocs;
 
 import com.liuxiaocs.bean.Customer;
 import com.liuxiaocs.bean.User;
+import com.liuxiaocs.four.Account;
 import com.liuxiaocs.injection.UserDAO;
 import com.liuxiaocs.injection.UserService;
 import org.junit.Test;
@@ -162,5 +163,20 @@ public class TestAnnotation {
         System.out.println("userService = " + userService);
         System.out.println("userDAOImpl = " + userDAO);
         userService.register();
+    }
+
+    @Test
+    public void test13() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        User u = (User) ctx.getBean("u");
+    }
+
+    @Test
+    public void test14() {
+        // ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(com.liuxiaocs.four.AppConfig10.class);
+        Account account = (Account) ctx.getBean("account");
+        System.out.println("account.getId() = " + account.getId());
+        System.out.println("account.getName() = " + account.getName());
     }
 }

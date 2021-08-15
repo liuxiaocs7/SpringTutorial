@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <bean id="customer" class="com.liuxiaocs.bean.Customer">
         <property name="id" value="2"/>
@@ -11,5 +12,16 @@
 <!--    <bean id="userDAO" class="com.liuxiaocs.injection.UserDAOImplNew"/>-->
 
     <bean id="userDAO" class="com.liuxiaocs.injection.UserDAOImpl"/>
+
+    <!--方式一：schema-->
+<!--    <context:property-placeholder location="classpath:four.properties"/>-->
+<!--    <bean id="account" class="com.liuxiaocs.four.Account"/>-->
+    <!--注解扫描，方式1,2,3需要-->
+<!--    <context:component-scan base-package="com.liuxiaocs.four"/>-->
+
+    <!--方式三：基于原始bean标签-->
+<!--    <bean id="propertyholder" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">-->
+<!--        <property name="location" value="classpath:four.properties"/>-->
+<!--    </bean>-->
 
 </beans>
