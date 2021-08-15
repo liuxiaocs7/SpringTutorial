@@ -1,0 +1,11 @@
+#name: suns
+#password: 123456
+
+#对象格式
+account:
+  name: xiaohei
+  password: 123456
+#list:
+#  - 1111
+#  - 2222
+list: 111,222
