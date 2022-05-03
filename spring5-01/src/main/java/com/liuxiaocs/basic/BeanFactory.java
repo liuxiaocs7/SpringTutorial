@@ -61,7 +61,7 @@ public class BeanFactory {
         }
         return userService;
 
-        // 方式·：直接返回一个新创建的对象
+        // 方式1：直接返回一个新创建的对象
         // return new UserServiceImpl();
     }
 
