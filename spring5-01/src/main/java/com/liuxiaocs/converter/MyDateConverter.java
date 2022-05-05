@@ -29,9 +29,9 @@ public class MyDateConverter implements Converter<String, Date> {
      *                  sdf.parse(String) ---> Date
      *
      * 问题：
-     * 1. 如果获取Spring配置文件中的原始输入字符串呢？
+     * 1. 如何获取Spring配置文件中的原始输入字符串呢？
      * param: source 代表的是配置文件中的日期字符串 <value>2020-10-11</value>
-     * 2. 转换好了之后如果交给Product中的成员变量进行赋值呢？
+     * 2. 转换好了之后如何交给Product中的成员变量进行赋值呢？
      * return: 当把转换好的Date作为convert方法的返回值后，Spring自动地为birthday属性进行注入(赋值)
      *
      */
