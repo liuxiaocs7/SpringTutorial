@@ -29,6 +29,8 @@
     <bean id="person" class="com.liuxiaocs.converter.Person">
         <property name="name" value="suns" />
         <property name="birthday" value="2020-04-01"/>
+        <!--默认日期转换器支持的格式-->
+        <!--<property name="birthday" value="2020/04/01"/>-->
     </bean>
 
 </beans>
