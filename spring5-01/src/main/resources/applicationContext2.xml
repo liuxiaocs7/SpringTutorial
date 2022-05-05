@@ -11,6 +11,7 @@
 
     <!--用于注册类型转换器，Spring提供的-->
     <!--这里用来注册我们自己写的 字符串-日期 转换器-->
+    <!--注意：这里的id只能写为：conversionService-->
     <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <!--为ConversionServiceFactoryBean的converters属性注入值，使用set注入的方式-->
         <!--通过源码可以知道这个成员变量的类型是set<?>，因此使用set为其赋值。-->
