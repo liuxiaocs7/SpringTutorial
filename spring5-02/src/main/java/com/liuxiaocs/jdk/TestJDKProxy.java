@@ -9,6 +9,9 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
+/**
+ * 测试JDK创建动态代理
+ */
 public class TestJDKProxy {
     /**
      * 1. 借用类加载器  TestJDKProxy

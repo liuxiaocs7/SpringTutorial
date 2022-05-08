@@ -22,18 +22,25 @@
         <!--execution(* *(..))表示所有的方法都加这个额外功能-->
         <!--所有的方法，都作为切入点，加入额外功能 login register-->
         <!--<aop:pointcut id="pc" expression="execution(* *(..))"/>-->
+
         <!--login(..)方法增加额外功能-->
         <!--<aop:pointcut id="pc" expression="execution(* login(..))"/>-->
         <!--login(String, String)方法增加额外功能-->
         <!--<aop:pointcut id="pc" expression="execution(* login(String, String))"/>-->
+        <!--参数不满足要求，不会作为切入点-->
         <!--<aop:pointcut id="pc" expression="execution(* login(String))"/>-->
+        <!--第一个参数是String，后面的参数任意-->
         <!--<aop:pointcut id="pc" expression="execution(* login(String, ..))"/>-->
-        <!--类全限定名-->
+
+        <!--类全限定名，多用于自定义类型-->
         <!--<aop:pointcut id="pc" expression="execution(* com.liuxiaocs.proxy.a.UserServiceImpl.login(..))"/>-->
         <!--类切入点，类中的所有方法-->
         <!--<aop:pointcut id="pc" expression="execution(* com.liuxiaocs.proxy.a.UserServiceImpl.*(..))"/>-->
+        <!--最多处理一层包-->
         <!--<aop:pointcut id="pc" expression="execution(* *.UserServiceImpl.*(..))"/>-->
+        <!--类存在多级包-->
         <!--<aop:pointcut id="pc" expression="execution(* *..UserServiceImpl.*(..))"/>-->
+
         <!--包切入点-->
         <!--包中所有类的所有方法，不关注参数-->
         <!--<aop:pointcut id="pc" expression="execution(* com.liuxiaocs.proxy.*.*(..))"/>-->

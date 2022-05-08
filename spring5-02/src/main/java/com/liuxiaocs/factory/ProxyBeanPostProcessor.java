@@ -8,6 +8,9 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
+/**
+ * 实现BeanPostProcessor接口
+ */
 public class ProxyBeanPostProcessor implements BeanPostProcessor {
 
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
@@ -16,6 +19,7 @@ public class ProxyBeanPostProcessor implements BeanPostProcessor {
 
     /**
      * Proxy.newProxyInstance();
+     * 基于接口的形式创建代理
      */
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         InvocationHandler handler = new InvocationHandler() {
@@ -25,6 +29,7 @@ public class ProxyBeanPostProcessor implements BeanPostProcessor {
                 return ret;
             }
         };
+        // 创建代理对象
         return Proxy.newProxyInstance(ProxyBeanPostProcessor.class.getClassLoader(), bean.getClass().getInterfaces(), handler);
     }
 }

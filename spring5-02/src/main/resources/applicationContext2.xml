@@ -14,6 +14,6 @@
     -->
     <bean id="arround" class="com.liuxiaocs.aspect.MyAspect"/>
 
-    <!--基于注解的形式进行AOP编程-->
+    <!--告知Spring现在基于注解的形式进行AOP编程-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 </beans>

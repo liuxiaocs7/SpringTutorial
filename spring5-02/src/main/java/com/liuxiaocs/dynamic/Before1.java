@@ -7,6 +7,8 @@ import java.lang.reflect.Method;
 
 /**
  * 额外功能写在接口的实现中
+ *
+ * 新的额外功能，修改替换方便
  */
 public class Before1 implements MethodBeforeAdvice {
 

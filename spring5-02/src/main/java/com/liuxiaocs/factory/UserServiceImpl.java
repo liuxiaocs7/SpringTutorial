@@ -3,6 +3,9 @@ package com.liuxiaocs.factory;
 
 import com.liuxiaocs.proxy.User;
 
+/**
+ * 原始对象
+ */
 public class UserServiceImpl implements UserService {
 
     public void login(String name, String password) {

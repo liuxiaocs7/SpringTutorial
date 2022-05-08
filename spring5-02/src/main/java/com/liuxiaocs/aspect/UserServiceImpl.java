@@ -10,6 +10,8 @@ import org.springframework.context.ApplicationContextAware;
 /**
  * 原始类、目标类
  * 只完成核心功能
+ *
+ * 实现 ApplicationContextAware 接口
  */
 public class UserServiceImpl implements UserService, ApplicationContextAware {
 
@@ -27,6 +29,9 @@ public class UserServiceImpl implements UserService, ApplicationContextAware {
     public void register(User user) {
         System.out.println("UserServiceImpl.register 业务运算 + DAO");
         // throw new RuntimeException("测试异常");
+
+        // 调用的是本类(原始类、原始对象)的login()方法，不会被加上额外功能，只能完成核心功能
+        // this.login();
 
         // 同一个Service业务类中不同的业务方法之间会有相互调用的可能
         // 此时调用的是原始对象的login方法 ---> 核心功能

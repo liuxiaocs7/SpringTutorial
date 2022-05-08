@@ -8,7 +8,6 @@
 
     <!--1. 实现BeanPostProcessor接口
     2. 配置文件中对BeanPostProcessor进行配置-->
-
     <bean id="proxyBeanPostProcessor" class="com.liuxiaocs.factory.ProxyBeanPostProcessor"/>
 
 </beans>

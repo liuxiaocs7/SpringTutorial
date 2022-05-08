@@ -38,7 +38,9 @@ public class MyAspect {
     }
 
     /**
-     * 等同于之前的invoke方法
+     * 额外功能
+     *
+     * 等同于之前的invoke方法  使用注解替换了之前实现接口的过程
      * 方法名可以随便命名
      * Object代表原始方法的返回值
      * ProceedingJoinPoint等同于之前的MethodInvocation即原始方法
@@ -49,6 +51,7 @@ public class MyAspect {
     @Around(value = "myPointcut()")
     public Object arround(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("----aspect log----");
+        // 执行原始方法
         Object ret = joinPoint.proceed();
         return ret;
     }
