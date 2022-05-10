@@ -51,6 +51,8 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
+    <!--组装切面-->
+    <!--<tx:annotation-driven transaction-manager="dataSourceTransactionManager" proxy-target-class="true"/>-->
     <tx:advice id="txAdvice" transaction-manager="dataSourceTransactionManager">
         <tx:attributes>
             <tx:method name="register" isolation="DEFAULT" propagation="REQUIRED"/>
