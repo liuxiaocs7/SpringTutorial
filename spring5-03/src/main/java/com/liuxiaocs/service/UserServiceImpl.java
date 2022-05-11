@@ -12,6 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
  * 切入点
  * 默认都是使用事务属性的默认值
  */
+// @Transactional(isolation = Isolation.REPEATABLE_READ)
+// @Transactional(propagation = Propagation.REQUIRED)
+// @Transactional(timeout = 2)  // 等待时间3s超过了超时属性设置的值，会抛出对应的异常
 // @Transactional(rollbackFor = {java.lang.Exception.class})
 public class UserServiceImpl implements UserService {
 
