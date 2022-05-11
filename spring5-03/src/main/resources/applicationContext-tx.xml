@@ -55,7 +55,10 @@
     <!--<tx:annotation-driven transaction-manager="dataSourceTransactionManager" proxy-target-class="true"/>-->
     <tx:advice id="txAdvice" transaction-manager="dataSourceTransactionManager">
         <tx:attributes>
-            <tx:method name="register" isolation="DEFAULT" propagation="REQUIRED"/>
+            <!--<tx:method name="register" isolation="DEFAULT" propagation="REQUIRED"/>-->
+            <tx:method name="register"/>
+            <tx:method name="modify*"/>
+            <tx:method name="*" propagation="SUPPORTS" read-only="true"/>
         </tx:attributes>
     </tx:advice>
     
